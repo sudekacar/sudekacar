@@ -1,6 +1,20 @@
 <h3 align="center">Hi there, I'm Sude 👋</h3>
 
 ---
+<p align="center">
+  <a href="https://www.linkedin.com/in/sudekacar/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://www.kaggle.com/seoksoon17" target="_blank">
+    <img src="https://img.shields.io/badge/Kaggle-20BEFF?style=flat-square&logo=kaggle&logoColor=white" />
+  </a>
+  <a href="https://stackoverflow.com/users/25939633/sude-y-kacar" target="_blank">
+    <img src="https://img.shields.io/badge/StackOverflow-FE7A16?style=flat-square&logo=stackoverflow&logoColor=white" />
+  </a>
+  <a href="https://github.com/sudekacar">
+    <img src="https://komarev.com/ghpvc/?username=sudekacar&style=flat-square" alt="Profile Views" />
+  </a>
+</p>
 
 ### 🔧 Languages and Tools:
 <p align="left">
