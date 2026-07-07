@@ -1,7 +1,5 @@
 # Merhaba! Ben Sude Yaren KACAR 👋
 
-theme=tokyonight
-
 Yönetim Bilişim Sistemleri (MIS) mezunu, Qybit Labs ve Qybit Machinery kurucusu, Full-stack ve Yapısal AI geliştiricisiyim.
 
 ### 🚀 Öne Çıkan Projelerim
@@ -23,10 +21,11 @@ Yönetim Bilişim Sistemleri (MIS) mezunu, Qybit Labs ve Qybit Machinery kurucus
 ---
 
 ### 📈 İstatistiklerim
+### 📈 İstatistiklerim
 
-![Sude's GitHub stats](https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=radical&hide_border=true&count_private=true)
+![Sude's GitHub stats](https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=sudekacar&layout=compact&theme=radical&hide_border=true)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=sudekacar&layout=compact&theme=tokyonight&hide_border=true)
 
 📫 **Bana ulaşın:**
 *   [LinkedIn](https://linkedin.com/in/sudeyarenkacar02)
