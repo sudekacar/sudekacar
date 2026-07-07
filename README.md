@@ -21,7 +21,6 @@ Yönetim Bilişim Sistemleri (MIS) mezunu, Qybit Labs ve Qybit Machinery kurucus
 ---
 
 ### 📈 İstatistiklerim
-### 📈 İstatistiklerim
 
 ![Sude's GitHub stats](https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
 
