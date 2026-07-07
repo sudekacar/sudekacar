@@ -1,5 +1,7 @@
 # Merhaba! Ben Sude Yaren KACAR 👋
 
+theme=tokyonight
+
 Yönetim Bilişim Sistemleri (MIS) mezunu, Qybit Labs ve Qybit Machinery kurucusu, Full-stack ve Yapısal AI geliştiricisiyim.
 
 ### 🚀 Öne Çıkan Projelerim
