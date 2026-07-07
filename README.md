@@ -22,8 +22,8 @@ Yönetim Bilişim Sistemleri (MIS) mezunu, Qybit Labs ve Qybit Machinery kurucus
 
 ### 📈 İstatistiklerim
 
-[https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=tokyonight&token=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]
-(https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=tokyonight&token=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)
+![Sude's GitHub stats][https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=tokyonight&token=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]
+![Top Langs](https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=tokyonight&token=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)
 
 📫 **Bana ulaşın:**
 *   [LinkedIn](https://linkedin.com/in/sudeyarenkacar02)
