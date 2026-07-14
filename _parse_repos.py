@@ -1,17 +1,63 @@
-import json
-from collections import Counter
+import os
+import re
+import requests
 
-with open(r"C:\Users\pc\.cursor\projects\c-Users-pc-Desktop-gthb\agent-tools\57057ed1-6f8b-43c9-b82b-a05a022b8d8d.txt", encoding="utf-8") as f:
-    repos = json.load(f)
+def get_github_stats(username, token):
+    headers = {"Authorization": f"token {token}"} if token else {}
+    
+    # Kullanıcı genel bilgilerini al
+    user_url = f"https://api.github.com/users/{username}"
+    user_data = requests.get(user_url, headers=headers).json()
+    
+    followers = user_data.get("followers", 0)
+    public_repos = user_data.get("public_repos", 0)
+    
+    # Repoları tara (Yıldızlar ve Commit'ler için)
+    repos_url = f"https://api.github.com/users/{username}/repos?per_page=100"
+    repos = requests.get(repos_url, headers=headers).json()
+    
+    total_stars = 0
+    if isinstance(repos, list):
+        for repo in repos:
+            total_stars += repo.get("stargazers_count", 0)
+            
+    return followers, public_repos, total_stars
 
-langs = Counter()
-for r in repos:
-    desc = (r.get("description") or "")[:70]
-    print(f"{r['name']:40} lang={str(r.get('language')):12} stars={r['stargazers_count']:3} fork={r['fork']} {desc}")
-    if r.get("language") and not r["fork"]:
-        langs[r["language"]] += 1
+def update_readme():
+    username = "sudekacar"
+    token = os.getenv("ACCESS_TOKEN")
+    
+    try:
+        followers, repos, stars = get_github_stats(username, token)
+    except Exception as e:
+        print(f"API hatası: {e}")
+        return
 
-print("---LANGS---")
-print(dict(langs))
-print("count", len(repos))
-print("own", sum(1 for r in repos if not r["fork"]))
+    readme_path = "README.md"
+    if not os.path.exists(readme_path):
+        print("README.md bulunamadı!")
+        return
+        
+    with open(readme_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # README içindeki sayıları regex (düzenli ifadeler) ile güncelle
+    # Repos Güncelleme
+    content = re.sub(
+        r"(★ <b>repos \(Contributed: \d+\)</b>:\s*)\d+", 
+        rf"\g<1>{repos}", 
+        content
+    )
+    # Stars Güncelleme
+    content = re.sub(
+        r"(★ <b>stars:</b>\s*)\d+", 
+        rf"\g<1>{stars}", 
+        content
+    )
+    
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(content)
+    print("README.md başarıyla güncellendi!")
+
+if __name__ == "__main__":
+    update_readme()
