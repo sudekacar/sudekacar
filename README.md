@@ -1,31 +1,41 @@
 <p align="center">
-  <img src="./gpp.png" alt="Sude'nin Qybit Terminali" width="100%" />
-</p>
-<br />
-
-<p align="center">
-  <!-- GitHub Stats Kartı (Mor/Pembe Tema ile Uyumlu) -->
-  <img src="https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=radical&hide_border=true&title_color=bc3df2&text_color=ffffff&icon_color=ff00ea&bg_color=0f0f15" height="150" />
-  <!-- En Çok Kullanılan Diller Kartı -->
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sudekacar&layout=compact&theme=radical&hide_border=true&title_color=bc3df2&text_color=ffffff&bg_color=0f0f15" height="150" />
-</p>
-
----
-
-### 💻 Öne Çıkan Projeler (Featured Projects)
-
-*   **[akbank-rag-projesi](https://github.com/sudekacar/akbank-rag-projesi):** Gemini 2.5 Flash ve RAG kullanarak finansal dökümanlardan soru cevaplayan akıllı asistan.
-*   **[technical-sarcasm-benchmark](https://github.com/sudekacar/technical-sarcasm-benchmark):** LLM'lerin teknik alaycılığı (sarcasm) anlama kapasitesini ölçen TPSR Benchmark çalışması.
-
----
-
-### 🔗 Bağlantılar & İletişim
-
-<p align="left">
-  <a href="https://linkedin.com/in/sudeyarenkacar" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white&style=for-the-badge" alt="LinkedIn" />
-  </a>
-  <a href="mailto:sudeyarenkacar@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
-  </a>
+  <samp>
+    <pre style="font-family: monospace; font-size: 9px; line-height: 1.1; color: #bc3df2; background: #0c0c14; padding: 20px; border-radius: 10px; border: 1px solid #ff00ea;">
+ __________________________________________________________________________________________
+| 🔴 🟡 🟢  sude@qybit:~                                                                     |
+|__________________________________________________________________________________________|
+|                                                                                          |
+|    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@      sude@qybit                             |
+|    @@@@@@@@@@@@@$$BWodhW@@@@@@@@@@@@@@@@@@@@      ----------                             |
+|    @@@@@@@@@@@@@@@@@@@@$$$@@@@@@@@@@@@@@@@@@      OS: QybitOS v2026.7                    |
+|    @@@@@@@@@@@$B$@@@@@@@@@@@@@@@@@@@@@@@@@@@      Uptime: 23 years, 1 month, 12 days     |
+|    @@@@@@@@@@BW$@@@@@@@@@@@@@@@@@@@@$$$BB@@@      Host: Cyber-Machinery Core             |
+|    @@@@@@@@@$WW$@@@@@@@@@@$$BBWBWWWB$WMWWB$@      Kernel: Neural Link 8.2                |
+|    @@@@@@@@@BMB$@@@@@$BWM#######MM####**M$@@      Shell: zsh (neon-theme)                |
+|    @@@@@@@@WMW$@@@@$BWWM#*#MMMMMM#*ooaahhW@@      IDE: VSCode, Helix                     |
+|    @@@@@@@$M#W@@@@@$BMM###M###*okdpkhkhM@@@@                                             |
+|    @@@@@@@WM#B@@@$$BWMMMMMM##**hdddkoahdaB@@      Languages.Prog: Next.js, TypeScript,    |
+|    @@@@@@$W**B@@@$$BWWWM##***kZZ0Qdhbwm#$@@@                      SQL, Python, Node.js   |
+|    @@@@@@$Wa*B@$$$BBBBWM#*ohakZJJJbdw0dB@@@@      Languages.Data: Python, Pandas, NumPy,  |
+|    @@@@@@$#a#W@$WWWWBBBBBWM#*hkpdbwOpmQO*$@@                      Scikit-Learn           |
+|    @@@@@@$#a#W@$BB$BMMMMMWM###hdwdbwZQQa$@@@      BI & Databases: Power BI, Tableau,     |
+|    @@@@@@$*oMB@$BMMM###MMM#oahba**o0Cb$@@@@@                      SQLite, PostgreSQL     |
+|    @@@@@@$ooWB@$BMM###MMo*ooaaM##WZZ0CmB@@@@      AI Frameworks: LangChain, ChromaDB,    |
+|    @@@@@@$o*W$@$BWWWMMWMaOkMMMBBWMZOZOm#@@@@                     RAG Pipelines, Git      |
+|    @@@@@@B*#W$@$$BMM*##*MMMMMM##*QC0phoohbB@                                             |
+|    @@@@@@W*MW$@$BWM*haoMMWWWWMMWCCCZwwmOCm@@      Hobbies: GenAI, Cybernetics,           |
+|    @@@@@@M*MW$@$BWMMkk*##MWW$@@@CCQZpbkdZa@@               Retro Gaming                  |
+|    @@@@@$##MW$@BWMM*hdooao*MWB@Cw0C0haM$BMk@                                             |
+|    @@@@@B*#WW$@BW#ohakahbdbho#WBw0Qabhohhb$@      Contact:                               |
+|    @@@@@B##WW$@ddbow*vQhpa#kXJJmW$MoBaQQmW@@      Email: sudeyarenkacar@gmail.com        |
+|    @@@@$$M#BB$@abdaZocYhWahpZmpJZO0d$#*#**M$      LinkedIn: linkedin.com/in/sudeyarenkacar|
+|    @@@@@$M#$$$@k#hok**oMM#hQZpkkbZmZ0CZW$$B@                                             |
+|    @@@@@$*M$$$@B#aa##*oho#W*MMWMopOZO0OaW@@@      GitHub Stats:                          |
+|    @@@@@B*M$@$@@@M#*oaoahkaMWW#WobZmJ}vZp@@@      ★ repos (Contributed: 133):  342       |
+|    @@@@@WoM$@@@@@$M*Baak#MhoWBBWZZmQk$BB@@@@      ★ stars:                     342       |
+|    @@@@@#oM$@@@@@B@$hk#*aah*WBMm00O00*$@@@@@      ★ commits:                   2,116     |
+|    @@@@@M#W@@@@@@W$@@$WohoW$@#hdwQQQQp$@@@@@      ★ Lines of Code:             1,250,780+|
+|__________________________________________________________________________________________|
+    </pre>
+  </samp>
 </p>
