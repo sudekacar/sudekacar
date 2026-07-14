@@ -1,8 +1,9 @@
 <table>
   <tr>
-    <!-- SOL TARAF: Cyberpunk ASCII Art -->
+    <!-- SOL TARAF: Cyberpunk ASCII Art (Yazı boyutu sub ile küçültüldü) -->
     <td valign="top" width="50%">
-      <pre style="color: #bc3df2; background: transparent; border: none; font-size: 7.5px; line-height: 1.05; font-weight: bold;">
+      <sub>
+        <pre>
 @@@@@@@@@@@@@@@@$@@@@@@@@@@@@@@@$@@@@@B$$MM$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@$$@@@@$@@@@@@@@@@@@@@@$$BWodhW@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@$B$@@@@@@@@@@@@@@@@@@@@@$$$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -58,13 +59,13 @@
 @@@BowaWB@@@@@@@@@B$$@MWMM#o*pka$$@@$B#Ok$$WBaB*@@@@BBMM#W$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@#BZ#@@@@@@@@@@@@$@@@@@@@@BBMamM$@@@$BBb0BBMMh#@@@BWM##W@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @B*wk@@@@@@@@@@@@@@$@@@@@@@$$$M#B$$@@@$$$on*$$aM@$BWWBMW$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-      </pre>
+        </pre>
+      </sub>
     </td>
-    
-    <!-- SAĞ TARAF: Detaylı Terminal Bilgileri -->
+    <!-- SAĞ TARAF: Terminal Detayları (Hizalı ve Temiz) -->
     <td valign="top" width="50%">
-      <pre style="color: #bc3df2; background: transparent; border: none; font-size: 13px; line-height: 1.5; font-family: monospace;">
-<b style="color: #ff00ea;">SudeYarenKacar@qybit</b>
+      <pre>
+<b>SudeYarenKacar@qybit</b>
 -----------------------
 <b>OS</b>: QybitOS
 <b>Uptime</b>: 23 years, 1 month, 12 days
@@ -79,10 +80,10 @@
 <b>Hobbies.Software</b>: GenAI, Cybernetics, Retro Gaming
 
 <b>Contact</b>:
-<b>Email</b>: sudeyarenkacar@gmail.com
-<b>LinkedIn</b>: <a href="https://linkedin.com/in/sudeyarenkacar" style="color: #ff00ea; text-decoration: underline;">linkedin/in/sudeyarenkacar</a>
+<b>Email</b>: <a href="mailto:sudeyarenkacar@gmail.com">sudeyarenkacar@gmail.com</a>
+<b>LinkedIn</b>: <a href="https://linkedin.com/in/sudeyarenkacar">linkedin.com/in/sudeyarenkacar</a>
 
-<b style="color: #ff00ea;">GitHub Stats</b> __________________
+<b>GitHub Stats</b> __________________
 ★ <b>repos (Contributed: 133)</b>:     342
 ★ <b>stars:</b>                          342
 ★ <b>commits:</b>                      2,116
