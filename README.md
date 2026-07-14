@@ -1,25 +1,15 @@
-.g@@@@@@@@W..                  sudeykacar@qybit
-             .M' |*lgNM==jMMg|\N.             ----------------
-            p[     . .   .|]jM]%M             OS:             QybitOS v2026.7
-           /[ .wp@Wv.      |\*`|%W            Uptime:         23 years, 1 month, 12 days
-         /[||||O0O0O000pp.  `   |'            Host:           Cyber-Machinery Core
-        /[|||||jkk'   `-nrn=j|                Kernel:         Neural Link 8.2
-       j"' jrr*^        - | `L`::|            Shell:          zsh (neon-theme)
-      j' /O00000HM##@W` `...\nmy  '           IDE:            VSCode, Helix
-     i r oooH##M#@@@*^ ^*****M*,p ;           
-     \_p%%%%%%%,.n;:;j%%k%%p%%%; j            Languages.Prog: Next.js, TypeScript, SQL, Python, Node.js
-      _"*#%@@B$$*""M#KWWbWzQQ0a"/             Languages.Data: Python, Pandas, NumPy, Scikit-Learn
-    /"*#M%@$$BWWWWWW##*hkpdbwOp"              BI & Databases: Power BI, Tableau, SQLite, PostgreSQL
-   j"*#M%@$$BB$BMMMMMWM###hdwdbw              AI Frameworks:  LangChain, ChromaDB, RAG Pipelines, Git
-   |  "*#%@$*oMB@$BMMM###MMM#oah              
-   |   "*#%@$ooWB@$BMM###MMo*ooa              Hobbies:        GenAI, Cybernetics, Retro Gaming
-   |   "*#%@$o*W$@$BWWWMMWMaOkMM              
-   |   "*#B*#W$@$$BMM*##*MMMMMM#              Contact:
-   |   "*#W*MW$@$BWM*haoMMWWWWMM                Email:        sudeyarenkacar@gmail.com
-   |   "*#M*MW$@$BWMMkk*##MWW$@@                LinkedIn:     linkedin.com/in/sudeyarenkacar
-   \   "*#$##MW$@BWMM*hdooao*MWB              
-                                              GitHub Stats:
-                                                Repos:        20
-                                                Stars:        1
-                                                Commits:      2,116
-                                                Lines of Code:1,250,780+
+<a href="https://github.com/sudekacar">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./dark_mode.svg">
+    <img alt="Sude Yaren Kacar — GitHub Profile" src="./light_mode.svg">
+  </picture>
+</a>
+
+<p align="center">
+  <img height="160" src="https://streak-stats.demolab.com/?user=sudekacar&theme=radical&hide_border=true&background=0C0C14&ring=FF00EA&fire=C084FC&currStreakLabel=FF00EA" alt="GitHub Streak" />
+  <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sudekacar&layout=compact&theme=radical&hide_border=true&bg_color=0C0C14&title_color=FF00EA&text_color=E6E6FA&langs_count=8" alt="Top Languages" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=sudekacar&show_icons=true&theme=radical&hide_border=true&bg_color=0C0C14&title_color=FF00EA&icon_color=C084FC&text_color=E6E6FA&count_private=true" alt="GitHub Stats" />
+</p>

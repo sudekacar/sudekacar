@@ -2,41 +2,42 @@ name: Update Profile README
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Her gün Türkiye saatiyle 11:00'de otomatik çalışır
-  workflow_dispatch: # Bu satır senin o gri "Run workflow" butonunu görmeni sağlar!
+    - cron: "0 8 * * *"
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: "3.12"
 
-      # HATA ÇÖZÜMÜ: Gerekli kütüphaneyi sunucuya kuruyoruz
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install -r requirements.txt
 
-      - name: Run Profile Updater Script
+      - name: Refresh SVG stats and stacks
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: |
-          if [ -f _parse_repos.py ]; then
-            python _parse_repos.py
-          else
-            echo "Updater script not found, skipping python run."
-          fi
+          USER_NAME: sudekacar
+          BIRTHDAY: ${{ secrets.BIRTHDAY }}
+        run: python today.py
 
-      - name: Commit and Push Changes
+      - name: Commit SVG updates only
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md assets/ || true
-          git commit -m "chore: auto update profile metrics" || true
-          git push origin main || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Never rewrite README.md — only update dynamic SVG + cache
+          git add dark_mode.svg light_mode.svg cache/
+          git diff --staged --quiet || (
+            git commit -m "chore: refresh profile SVG stats" &&
+            git push
+          )
