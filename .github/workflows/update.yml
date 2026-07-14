@@ -1,0 +1,36 @@
+name: Update Profile README
+
+on:
+  schedule:
+    - cron: '0 8 * * *' # Her gün Türkiye saatiyle 11:00'de otomatik çalışır
+  workflow_dispatch: # Bu satır senin o gri "Run workflow" butonunu görmeni sağlar!
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Profile Updater Script
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          if [ -f _parse_repos.py ]; then
+            python _parse_repos.py
+          else
+            echo "Updater script not found, skipping python run."
+          fi
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md assets/ || true
+          git commit -m "chore: auto update profile metrics" || true
+          git push origin main || true
