@@ -489,6 +489,136 @@ def fetch_stacks_from_projects():
     return result
 
 
+def fetch_language_bytes():
+    """Aggregate language byte counts across public non-fork repos."""
+    auth_headers = {"Accept": "application/vnd.github+json"}
+    if HEADERS.get("authorization", "").strip() not in ("token", "token "):
+        auth_headers.update(HEADERS)
+
+    totals = Counter()
+    page = 1
+    while True:
+        resp = requests.get(
+            f"https://api.github.com/users/{USER_NAME}/repos",
+            params={"per_page": 100, "page": page, "type": "owner"},
+            headers=auth_headers,
+            timeout=30,
+        )
+        if resp.status_code != 200:
+            break
+        repos = resp.json()
+        if not repos:
+            break
+        for repo in repos:
+            if repo.get("fork"):
+                continue
+            lang_resp = requests.get(repo["languages_url"], headers=auth_headers, timeout=30)
+            if lang_resp.status_code == 200:
+                for name, nbytes in lang_resp.json().items():
+                    if name not in IGNORE_LANGS:
+                        totals[name] += nbytes
+        page += 1
+        if page > 5:
+            break
+    return totals.most_common(8)
+
+
+LANG_COLORS = {
+    "Python": "#3572A5",
+    "TypeScript": "#3178C6",
+    "JavaScript": "#F7DF1E",
+    "Jupyter Notebook": "#DA5B0B",
+    "CSS": "#563D7C",
+    "HTML": "#E34C26",
+    "Go": "#00ADD8",
+    "Rust": "#DEA584",
+    "Java": "#B07219",
+    "C++": "#F34B7D",
+    "SQL": "#E38C00",
+    "Shell": "#89E051",
+}
+
+
+def _esc(text):
+    return (
+        str(text)
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+def write_top_languages_svg(filename, lang_data):
+    """Render top languages bar chart as a self-hosted SVG."""
+    w, h = 420, 200
+    if not lang_data:
+        lang_data = [("Python", 1), ("TypeScript", 1)]
+
+    max_bytes = max(n for _, n in lang_data) or 1
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" font-family="Consolas,Menlo,monospace">',
+        f'<rect width="{w}" height="{h}" rx="12" fill="#0C0C14" stroke="#BC3DF2" stroke-width="1.5"/>',
+        f'<text x="18" y="28" fill="#FF00EA" font-size="15" font-weight="bold">Top Languages</text>',
+        f'<text x="18" y="46" fill="#6B5B7A" font-size="11">from public repos</text>',
+    ]
+
+    y = 62
+    bar_max = w - 150
+    for lang, nbytes in lang_data[:7]:
+        pct = nbytes / max_bytes
+        bar_w = max(8, int(bar_max * pct))
+        color = LANG_COLORS.get(lang, "#C084FC")
+        label = lang if len(lang) <= 16 else lang[:14] + "…"
+        lines.append(f'<text x="18" y="{y + 12}" fill="#E6E6FA" font-size="12">{_esc(label)}</text>')
+        lines.append(
+            f'<rect x="130" y="{y}" width="{bar_w}" height="16" rx="4" fill="{color}" opacity="0.9"/>'
+        )
+        lines.append(f'<text x="{130 + bar_w + 8}" y="{y + 12}" fill="#C084FC" font-size="11">{_esc(f"{pct*100:.1f}%")}</text>')
+        y += 22
+
+    lines.append("</svg>")
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+
+def write_github_stats_svg(filename, stats):
+    """Render GitHub stats card as a self-hosted SVG."""
+    w, h = 460, 195
+    items = [
+        ("Stars", stats.get("stars", 0), "★"),
+        ("Repos", stats.get("repos", 0), "◆"),
+        ("Commits", stats.get("commits", 0), "●"),
+        ("Followers", stats.get("followers", 0), "♥"),
+        ("Lines of Code", stats.get("loc", 0), "▲"),
+    ]
+
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" font-family="Consolas,Menlo,monospace">',
+        f'<rect width="{w}" height="{h}" rx="12" fill="#0C0C14" stroke="#BC3DF2" stroke-width="1.5"/>',
+        f'<text x="18" y="30" fill="#FF00EA" font-size="16" font-weight="bold">GitHub Stats</text>',
+        f'<text x="18" y="50" fill="#6B5B7A" font-size="11">@{_esc(USER_NAME)}</text>',
+    ]
+
+    x, y = 18, 72
+    col_w = 140
+    for i, (label, value, icon) in enumerate(items):
+        col = i % 3
+        row = i // 3
+        cx = x + col * col_w
+        cy = y + row * 58
+        val = f"{value:,}" if isinstance(value, int) else str(value)
+        lines.append(f'<text x="{cx}" y="{cy}" fill="#C084FC" font-size="14">{icon}</text>')
+        lines.append(f'<text x="{cx + 18}" y="{cy}" fill="#E6E6FA" font-size="13" font-weight="bold">{_esc(val)}</text>')
+        lines.append(f'<text x="{cx}" y="{cy + 18}" fill="#6B5B7A" font-size="11">{_esc(label)}</text>')
+
+    lines.append("</svg>")
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+
 def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib_data, follower_data, loc_data, stacks):
     tree = etree.parse(filename)
     root = tree.getroot()
@@ -603,6 +733,21 @@ if __name__ == "__main__":
             total_loc[:-1],
             stacks,
         )
+
+    lang_data, lang_time = perf_counter(fetch_language_bytes)
+    formatter("language bytes", lang_time)
+    write_top_languages_svg("top_languages.svg", lang_data)
+    write_github_stats_svg(
+        "github_stats.svg",
+        {
+            "stars": star_data,
+            "repos": repo_data,
+            "commits": commit_data,
+            "followers": follower_data,
+            "loc": int(str(total_loc[2]).replace(",", "")) if total_loc else 0,
+        },
+    )
+    print("  wrote top_languages.svg + github_stats.svg")
 
     print("Total GitHub GraphQL API calls:", sum(QUERY_COUNT.values()))
     for name, count in QUERY_COUNT.items():
