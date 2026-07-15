@@ -6,8 +6,12 @@
 </a>
 
 <p align="center">
-  <img height="195" src="https://streak-stats.demolab.com/?user=sudekacar&theme=radical&hide_border=true&background=0C0C14&ring=FF00EA&fire=C084FC&currStreakLabel=FF00EA" alt="GitHub Streak" />
-  <img height="195" src="https://raw.githubusercontent.com/sudekacar/sudekacar/main/top_languages.svg" alt="Top Languages" />
+  <img height="230" src="https://streak-stats.demolab.com/?user=sudekacar&theme=radical&hide_border=true&background=0C0C14&ring=FF00EA&fire=C084FC&currStreakLabel=FF00EA" alt="GitHub Streak" />
+  <img height="230" src="https://raw.githubusercontent.com/sudekacar/sudekacar/main/top_languages.svg" alt="Top Languages" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sudekacar/sudekacar/main/stacks_card.svg" alt="Tech Stacks" />
 </p>
 
 <p align="center">

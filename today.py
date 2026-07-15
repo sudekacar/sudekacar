@@ -485,8 +485,20 @@ def fetch_stacks_from_projects():
         for name in items:
             if name not in ordered:
                 ordered.append(name)
-        result[bucket] = ", ".join(ordered[:5])
+        result[bucket] = ", ".join(ordered[:3])
     return result
+
+
+def truncate(text, max_len=34):
+    text = str(text)
+    return text if len(text) <= max_len else text[: max_len - 1] + "…"
+
+
+LANG_SHORT = {
+    "Jupyter Notebook": "Jupyter",
+    "TypeScript": "TypeScript",
+    "JavaScript": "JavaScript",
+}
 
 
 def fetch_language_bytes():
@@ -551,33 +563,70 @@ def _esc(text):
 
 def write_top_languages_svg(filename, lang_data):
     """Render top languages bar chart as a self-hosted SVG."""
-    w, h = 420, 200
+    w, h = 460, 230
     if not lang_data:
         lang_data = [("Python", 1), ("TypeScript", 1)]
 
     max_bytes = max(n for _, n in lang_data) or 1
+    label_x, bar_x, pct_x = 16, 118, w - 44
+    bar_max = pct_x - bar_x - 10
+
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" font-family="Consolas,Menlo,monospace">',
         f'<rect width="{w}" height="{h}" rx="12" fill="#0C0C14" stroke="#BC3DF2" stroke-width="1.5"/>',
-        f'<text x="18" y="28" fill="#FF00EA" font-size="15" font-weight="bold">Top Languages</text>',
-        f'<text x="18" y="46" fill="#6B5B7A" font-size="11">from public repos</text>',
+        f'<text x="18" y="30" fill="#FF00EA" font-size="15" font-weight="bold">Top Languages</text>',
+        f'<text x="18" y="48" fill="#6B5B7A" font-size="11">from public repos</text>',
     ]
 
-    y = 62
-    bar_max = w - 150
-    for lang, nbytes in lang_data[:7]:
+    y = 68
+    for lang, nbytes in lang_data[:6]:
         pct = nbytes / max_bytes
-        bar_w = max(8, int(bar_max * pct))
+        bar_w = max(6, int(bar_max * pct))
         color = LANG_COLORS.get(lang, "#C084FC")
-        label = lang if len(lang) <= 16 else lang[:14] + "…"
-        lines.append(f'<text x="18" y="{y + 12}" fill="#E6E6FA" font-size="12">{_esc(label)}</text>')
+        label = LANG_SHORT.get(lang, lang)
+        label = truncate(label, 12)
         lines.append(
-            f'<rect x="130" y="{y}" width="{bar_w}" height="16" rx="4" fill="{color}" opacity="0.9"/>'
+            f'<text x="{label_x}" y="{y + 13}" fill="#E6E6FA" font-size="12">{_esc(label)}</text>'
         )
-        lines.append(f'<text x="{130 + bar_w + 8}" y="{y + 12}" fill="#C084FC" font-size="11">{_esc(f"{pct*100:.1f}%")}</text>')
-        y += 22
+        lines.append(
+            f'<rect x="{bar_x}" y="{y}" width="{bar_w}" height="18" rx="4" fill="{color}" opacity="0.9"/>'
+        )
+        lines.append(
+            f'<text x="{pct_x}" y="{y + 13}" fill="#C084FC" font-size="11" text-anchor="end">{pct * 100:.1f}%</text>'
+        )
+        y += 26
 
+    lines.append("</svg>")
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+
+def write_stacks_svg(filename, stacks):
+    """Dedicated stacks card — always visible below the terminal."""
+    w, h = 520, 175
+    rows = [
+        ("Programming", stacks.get("Programming", ""), "#FF00EA"),
+        ("Frameworks", stacks.get("Frameworks", ""), "#C084FC"),
+        ("AI / ML", stacks.get("AI/ML", ""), "#A855F7"),
+        ("Data", stacks.get("Data", ""), "#7C3AED"),
+    ]
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" font-family="Consolas,Menlo,monospace">',
+        f'<rect width="{w}" height="{h}" rx="12" fill="#0C0C14" stroke="#BC3DF2" stroke-width="1.5"/>',
+        f'<text x="18" y="30" fill="#FF00EA" font-size="15" font-weight="bold">Tech Stacks</text>',
+        f'<text x="18" y="48" fill="#6B5B7A" font-size="11">auto-detected from repos</text>',
+    ]
+    y = 72
+    for label, value, color in rows:
+        lines.append(
+            f'<text x="18" y="{y}" fill="{color}" font-size="12" font-weight="bold">{_esc(label)}</text>'
+        )
+        lines.append(
+            f'<text x="130" y="{y}" fill="#E6E6FA" font-size="12">{_esc(truncate(value, 52))}</text>'
+        )
+        y += 24
     lines.append("</svg>")
     with open(filename, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
@@ -585,34 +634,36 @@ def write_top_languages_svg(filename, lang_data):
 
 def write_github_stats_svg(filename, stats):
     """Render GitHub stats card as a self-hosted SVG."""
-    w, h = 460, 195
+    w, h = 520, 200
     items = [
         ("Stars", stats.get("stars", 0), "★"),
         ("Repos", stats.get("repos", 0), "◆"),
         ("Commits", stats.get("commits", 0), "●"),
         ("Followers", stats.get("followers", 0), "♥"),
-        ("Lines of Code", stats.get("loc", 0), "▲"),
+        ("LOC", stats.get("loc", 0), "▲"),
     ]
 
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" font-family="Consolas,Menlo,monospace">',
         f'<rect width="{w}" height="{h}" rx="12" fill="#0C0C14" stroke="#BC3DF2" stroke-width="1.5"/>',
-        f'<text x="18" y="30" fill="#FF00EA" font-size="16" font-weight="bold">GitHub Stats</text>',
-        f'<text x="18" y="50" fill="#6B5B7A" font-size="11">@{_esc(USER_NAME)}</text>',
+        f'<text x="18" y="32" fill="#FF00EA" font-size="16" font-weight="bold">GitHub Stats</text>',
+        f'<text x="18" y="52" fill="#6B5B7A" font-size="11">@{_esc(USER_NAME)}</text>',
     ]
 
-    x, y = 18, 72
-    col_w = 140
+    x, y = 18, 78
+    col_w = 155
     for i, (label, value, icon) in enumerate(items):
         col = i % 3
         row = i // 3
         cx = x + col * col_w
-        cy = y + row * 58
+        cy = y + row * 62
         val = f"{value:,}" if isinstance(value, int) else str(value)
         lines.append(f'<text x="{cx}" y="{cy}" fill="#C084FC" font-size="14">{icon}</text>')
-        lines.append(f'<text x="{cx + 18}" y="{cy}" fill="#E6E6FA" font-size="13" font-weight="bold">{_esc(val)}</text>')
-        lines.append(f'<text x="{cx}" y="{cy + 18}" fill="#6B5B7A" font-size="11">{_esc(label)}</text>')
+        lines.append(
+            f'<text x="{cx + 20}" y="{cy}" fill="#E6E6FA" font-size="13" font-weight="bold">{_esc(val)}</text>'
+        )
+        lines.append(f'<text x="{cx}" y="{cy + 20}" fill="#6B5B7A" font-size="11">{_esc(label)}</text>')
 
     lines.append("</svg>")
     with open(filename, "w", encoding="utf-8") as f:
@@ -632,11 +683,11 @@ def svg_overwrite(filename, age_data, commit_data, star_data, repo_data, contrib
     justify_format(root, "loc_add", loc_data[0])
     justify_format(root, "loc_del", loc_data[1], 7)
 
-    # stack lines (no heavy justify — just replace text)
-    find_and_replace(root, "stack_prog", stacks["Programming"])
-    find_and_replace(root, "stack_fw", stacks["Frameworks"])
-    find_and_replace(root, "stack_ai", stacks["AI/ML"])
-    find_and_replace(root, "stack_data", stacks["Data"])
+    # stack lines — truncate so text stays inside the terminal box
+    find_and_replace(root, "stack_prog", truncate(stacks["Programming"], 36))
+    find_and_replace(root, "stack_fw", truncate(stacks["Frameworks"], 36))
+    find_and_replace(root, "stack_ai", truncate(stacks["AI/ML"], 36))
+    find_and_replace(root, "stack_data", truncate(stacks["Data"], 36))
     tree.write(filename, encoding="utf-8", xml_declaration=True)
 
 
@@ -737,6 +788,7 @@ if __name__ == "__main__":
     lang_data, lang_time = perf_counter(fetch_language_bytes)
     formatter("language bytes", lang_time)
     write_top_languages_svg("top_languages.svg", lang_data)
+    write_stacks_svg("stacks_card.svg", stacks)
     write_github_stats_svg(
         "github_stats.svg",
         {
@@ -747,7 +799,7 @@ if __name__ == "__main__":
             "loc": int(str(total_loc[2]).replace(",", "")) if total_loc else 0,
         },
     )
-    print("  wrote top_languages.svg + github_stats.svg")
+    print("  wrote top_languages.svg + stacks_card.svg + github_stats.svg")
 
     print("Total GitHub GraphQL API calls:", sum(QUERY_COUNT.values()))
     for name, count in QUERY_COUNT.items():

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="175" font-family="Consolas,Menlo,monospace">
+<rect width="520" height="175" rx="12" fill="#0C0C14" stroke="#BC3DF2" stroke-width="1.5"/>
+<text x="18" y="30" fill="#FF00EA" font-size="15" font-weight="bold">Tech Stacks</text>
+<text x="18" y="48" fill="#6B5B7A" font-size="11">auto-detected from repos</text>
+<text x="18" y="72" fill="#FF00EA" font-size="12" font-weight="bold">Programming</text>
+<text x="130" y="72" fill="#E6E6FA" font-size="12">Python, TypeScript, JavaScript</text>
+<text x="18" y="96" fill="#C084FC" font-size="12" font-weight="bold">Frameworks</text>
+<text x="130" y="96" fill="#E6E6FA" font-size="12">Next.js, React, Streamlit</text>
+<text x="18" y="120" fill="#A855F7" font-size="12" font-weight="bold">AI / ML</text>
+<text x="130" y="120" fill="#E6E6FA" font-size="12">Gemini, RAG, NLP</text>
+<text x="18" y="144" fill="#7C3AED" font-size="12" font-weight="bold">Data</text>
+<text x="130" y="144" fill="#E6E6FA" font-size="12">SQLite, Pandas, NumPy</text>
+</svg>

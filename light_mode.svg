@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="ConsolasFallback,Consolas,Menlo,monospace" width="1020px" height="540px" font-size="15px">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="ConsolasFallback,Consolas,Menlo,monospace" width="1120px" height="560px" font-size="15px">
 <style>
 @font-face {
 src: local('Consolas'), local('Consolas Bold');
@@ -22,7 +22,7 @@ text, tspan {white-space: pre;}
     <stop offset="100%" stop-color="#7c3aed"/>
   </linearGradient>
 </defs>
-<rect width="1020px" height="540px" fill="#f6f0ff" rx="15" stroke="#7c3aed" stroke-width="1.5"/>
+<rect width="1120px" height="560px" fill="#f6f0ff" rx="15" stroke="#7c3aed" stroke-width="1.5"/>
 <!-- traffic lights -->
 <circle cx="28" cy="24" r="7" fill="#ff5f57"/>
 <circle cx="52" cy="24" r="7" fill="#febc2e"/>
@@ -40,14 +40,14 @@ text, tspan {white-space: pre;}
 <tspan x="400" y="155" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ............... </tspan><tspan class="value">AI &amp; LLM Specialist</tspan>
 <tspan x="400" y="180" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ...................... </tspan><tspan class="value">Cursor, VS Code</tspan>
 <tspan x="400" y="210" class="cc">. </tspan><tspan class="key">Stacks</tspan>.<tspan class="key">Programming</tspan>:<tspan class="cc" id="stack_prog_dots"> .... </tspan><tspan class="value" id="stack_prog">Python, TypeScript, JavaScript</tspan>
-<tspan x="400" y="235" class="cc">. </tspan><tspan class="key">Stacks</tspan>.<tspan class="key">Frameworks</tspan>:<tspan class="cc" id="stack_fw_dots"> ..... </tspan><tspan class="value" id="stack_fw">Next.js, React, Streamlit, Tailwind, Context API</tspan>
-<tspan x="400" y="260" class="cc">. </tspan><tspan class="key">Stacks</tspan>.<tspan class="key">AI/ML</tspan>:<tspan class="cc" id="stack_ai_dots"> .......... </tspan><tspan class="value" id="stack_ai">Gemini, RAG, NLP, Jupyter Notebook, AI Safety</tspan>
-<tspan x="400" y="285" class="cc">. </tspan><tspan class="key">Stacks</tspan>.<tspan class="key">Data</tspan>:<tspan class="cc" id="stack_data_dots"> ........... </tspan><tspan class="value" id="stack_data">SQLite, Pandas, NumPy, E-commerce, Data Science</tspan>
+<tspan x="400" y="235" class="cc">. </tspan><tspan class="key">Stacks</tspan>.<tspan class="key">Frameworks</tspan>:<tspan class="cc" id="stack_fw_dots"> ..... </tspan><tspan class="value" id="stack_fw">Next.js, React, Streamlit</tspan>
+<tspan x="400" y="260" class="cc">. </tspan><tspan class="key">Stacks</tspan>.<tspan class="key">AI/ML</tspan>:<tspan class="cc" id="stack_ai_dots"> .......... </tspan><tspan class="value" id="stack_ai">Gemini, RAG, NLP</tspan>
+<tspan x="400" y="285" class="cc">. </tspan><tspan class="key">Stacks</tspan>.<tspan class="key">Data</tspan>:<tspan class="cc" id="stack_data_dots"> ........... </tspan><tspan class="value" id="stack_data">SQLite, Pandas, NumPy</tspan>
 <tspan x="400" y="310" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Real</tspan>:<tspan class="cc"> ................. </tspan><tspan class="value">Turkish, English</tspan>
 <tspan x="400" y="340">- Contact</tspan> ————————————————————————————————————
 <tspan x="400" y="365" class="cc">. </tspan><tspan class="key">Email</tspan>:<tspan class="cc"> ............... </tspan><tspan class="value">sudeykacar@gmail.com</tspan>
 <tspan x="400" y="390" class="cc">. </tspan><tspan class="key">LinkedIn</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">sudeyarenkacar02</tspan>
-<tspan x="400" y="415" class="cc">. </tspan><tspan class="key">Portfolio</tspan>:<tspan class="cc"> ........... </tspan><tspan class="value">sudeyarenkacarportfolio</tspan>
+<tspan x="400" y="415" class="cc">. </tspan><tspan class="key">Portfolio</tspan>:<tspan class="cc"> ........... </tspan><tspan class="value">sudeyarenkacar</tspan>
 <tspan x="400" y="445">- GitHub Stats</tspan> ———————————————————————————————
 <tspan x="400" y="470" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> .... </tspan><tspan class="value" id="repo_data">20</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">21</tspan>} | <tspan class="key">Stars</tspan>:<tspan class="cc" id="star_data_dots"> ......... </tspan><tspan class="value" id="star_data">2</tspan>
 <tspan x="400" y="495" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc" id="commit_data_dots"> ............... </tspan><tspan class="value" id="commit_data">122</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ....... </tspan><tspan class="value" id="follower_data">3</tspan>
